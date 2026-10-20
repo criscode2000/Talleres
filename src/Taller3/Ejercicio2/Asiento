@@ -1,0 +1,44 @@
+
+package Taller3.Vuelo; // Indica el paquete al que pertenece la clase.
+
+public class Asiento { // Declara la clase que representa un asiento.
+
+    private String codigo; // Guarda el código identificador del asiento.
+    private boolean ocupado; // Indica si el asiento está ocupado.
+
+    public Asiento(String codigo) { // Constructor que recibe el código.
+        this.codigo = codigo; // Guarda el código recibido.
+        this.ocupado = false; // El asiento comienza desocupado.
+    }
+
+    public String getCodigo() { // Getter del código.
+        return codigo; // Devuelve el código del asiento.
+    }
+
+    public boolean isOcupado() { // Getter del estado de ocupación.
+        return ocupado; // Devuelve true si está ocupado.
+    }
+
+    public void ocupar() { // Intenta ocupar el asiento.
+        if (ocupado) { // Comprueba si ya está ocupado.
+            System.out.println("El asiento " + codigo + " ya está ocupado."); // Informa del problema.
+        } else { // Se ejecuta si está libre.
+            ocupado = true; // Marca el asiento como ocupado.
+            System.out.println("Se ocupó el asiento " + codigo); // Confirma la operación.
+        }
+    }
+
+    public void liberar() { // Intenta liberar el asiento.
+        if (!ocupado) { // Comprueba si ya está libre.
+            System.out.println("El asiento " + codigo + " ya está libre."); // Informa del estado.
+        } else { // Se ejecuta si está ocupado.
+            ocupado = false; // Marca el asiento como libre.
+            System.out.println("Se liberó el asiento " + codigo); // Confirma la operación.
+        }
+    }
+
+    public void mostrarEstado() { // Muestra la información del asiento.
+        String estado = ocupado ? "ocupado" : "libre"; // Determina el texto según el estado.
+        System.out.println("Asiento " + codigo + ": " + estado); // Imprime el código y su estado.
+    }
+}

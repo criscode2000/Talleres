@@ -1,0 +1,83 @@
+
+package Taller3.Lector; // Indica el paquete de la clase.
+
+public class Lector { // Declara la clase que representa a un lector.
+
+    private String nombre; // Guarda el nombre del lector.
+    private String cedula; // Guarda la cédula del lector.
+    private Libro libroActual; // Referencia al libro que tiene prestado; puede ser null.
+
+    public Lector() { // Constructor vacío.
+        this.nombre = ""; // Inicializa el nombre vacío.
+        this.cedula = ""; // Inicializa la cédula vacía.
+        this.libroActual = null; // El lector comienza sin libro.
+    }
+
+    public Lector(String nombre, String cedula) { // Constructor con los datos del lector.
+        this.nombre = nombre; // Guarda el nombre recibido.
+        this.cedula = cedula; // Guarda la cédula recibida.
+        this.libroActual = null; // No se asigna ningún libro inicialmente.
+    }
+
+    public String getNombre() { // Getter del nombre.
+        return nombre; // Devuelve el nombre.
+    }
+
+    public void setNombre(String nombre) { // Setter del nombre.
+        this.nombre = nombre; // Actualiza el nombre.
+    }
+
+    public String getCedula() { // Getter de la cédula.
+        return cedula; // Devuelve la cédula.
+    }
+
+    public void setCedula(String cedula) { // Setter de la cédula.
+        this.cedula = cedula; // Actualiza la cédula.
+    }
+
+    public Libro getLibroActual() { // Getter del libro actual.
+        return libroActual; // Devuelve la referencia al libro o null.
+    }
+
+    public void setLibroActual(Libro libroActual) { // Setter del libro actual.
+        this.libroActual = libroActual; // Asigna la referencia recibida.
+    }
+
+    public void tomarPrestado(Libro libro) { // Permite que el lector tome un libro.
+        if (libroActual != null) { // Comprueba si ya tiene un libro asignado.
+            System.out.println(nombre + " ya tiene un libro."); // Informa que no puede tomar otro.
+            return; // Termina el método sin realizar el préstamo.
+        }
+
+        if (libro == null) { // Comprueba que se haya recibido un libro válido.
+            System.out.println("No se puede prestar un libro inexistente."); // Informa del error.
+            return; // Termina el método.
+        }
+
+        if (libro.isPrestado()) { // Comprueba si el libro ya está prestado.
+            System.out.println("El libro ya está prestado a otro lector."); // Evita otro préstamo.
+            return; // Termina el método sin asignar el libro.
+        }
+
+        libro.prestar(); // Cambia el estado del libro a prestado.
+        libroActual = libro; // Guarda la referencia al libro prestado.
+    }
+
+    public void regresarLibro() { // Permite devolver el libro actual.
+        if (libroActual == null) { // Comprueba si el lector no tiene libro.
+            System.out.println(nombre + " no tiene ningún libro para devolver."); // Informa del estado.
+            return; // Termina el método.
+        }
+
+        libroActual.devolver(); // Marca como disponible el libro actual.
+        libroActual = null; // Elimina la referencia del lector al libro.
+    }
+
+    public void mostrarEstado() { // Muestra el estado del lector.
+        if (libroActual == null) { // Comprueba si no tiene libro.
+            System.out.println(nombre + " no tiene libro."); // Imprime el estado sin préstamo.
+        } else { // Se ejecuta si tiene un libro.
+            System.out.println(nombre + " tiene: " + libroActual.getTitulo()); // Imprime el título.
+        }
+    }
+}

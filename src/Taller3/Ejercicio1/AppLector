@@ -1,0 +1,31 @@
+
+package Taller3.Lector; // Indica el paquete de la aplicación.
+
+public class AppLector { // Declara la clase principal para probar la asociación.
+
+    public static void main(String[] args) { // Punto de inicio del programa.
+
+        Libro libro1 = new Libro("Cien años de soledad", "Gabriel García Márquez"); // Crea el primer libro.
+        Libro libro2 = new Libro("1984", "George Orwell"); // Crea el segundo libro.
+
+        Lector lector1 = new Lector("Laura Torres", "123456789"); // Crea el primer lector.
+        Lector lector2 = new Lector("Juan Pérez", "987654321"); // Crea el segundo lector.
+
+        lector1.tomarPrestado(libro1); // El primer lector toma el primer libro.
+        lector2.tomarPrestado(libro2); // El segundo lector toma el segundo libro.
+
+        System.out.println("\n=== ESTADO INICIAL ==="); // Imprime el encabezado inicial.
+        lector1.mostrarEstado(); // Muestra el estado del primer lector.
+        lector2.mostrarEstado(); // Muestra el estado del segundo lector.
+
+        System.out.println("\n=== DEVOLUCIÓN Y NUEVO PRÉSTAMO ==="); // Imprime el encabezado de la operación.
+        lector1.regresarLibro(); // El primer lector devuelve el primer libro.
+        lector2.regresarLibro(); // El segundo lector devuelve el segundo libro.
+        lector1.tomarPrestado(libro2); // El primer lector toma el libro que quedó disponible.
+
+        System.out.println("\n=== ESTADO FINAL ==="); // Imprime el encabezado final.
+        lector1.mostrarEstado(); // Muestra el libro que tiene el primer lector.
+        lector2.mostrarEstado(); // Muestra que el segundo lector no tiene libro.
+
+    } // Termina el método main.
+} // Termina la clase AppLector.

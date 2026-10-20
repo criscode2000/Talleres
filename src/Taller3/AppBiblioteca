@@ -1,0 +1,50 @@
+/* Ejercicio 3 — Agregación: Biblioteca y Libro
+Crea una clase Biblioteca con los siguientes atributos privados:
+
+nombre (String)
+catalogo (Libro[]) — arreglo de libros con capacidad máxima de 10.
+cantidad (int) — número de libros actualmente registrados.
+La clase debe tener:
+
+Constructor con nombre. El catálogo inicia vacío.
+Getter para nombre.
+Un método agregarLibro(Libro libro) que agregue un libro al catálogo. Si ya está lleno, debe avisarlo.
+Un método mostrarCatalogo() que imprima el nombre de la biblioteca y llame a mostrarInfo() de cada libro registrado.
+Un método buscarPorAutor(String autor) que imprima todos los libros de ese autor, o un mensaje si no hay ninguno.
+En App.java:
+
+Crea tres objetos Libro por separado (fuera de la biblioteca).
+Crea una Biblioteca y agrégale los libros con agregarLibro().
+Muestra el catálogo completo.
+Busca libros por autor. */
+
+package Taller3.Biblioteca; // Indica el paquete de la aplicación.
+
+public class AppBiblioteca { // Declara la clase principal del ejercicio.
+
+    public static void main(String[] args) { // Punto de inicio del programa.
+
+        Libro libro1 = new Libro("Cien años de soledad", "Gabriel García Márquez"); // Crea el primer libro independientemente.
+        Libro libro2 = new Libro("1984", "George Orwell"); // Crea el segundo libro independientemente.
+        Libro libro3 = new Libro("El Principito", "Antoine de Saint-Exupéry"); // Crea el tercer libro independientemente.
+
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Central"); // Crea la biblioteca con su catálogo vacío.
+
+        biblioteca.agregarLibro(libro1); // Agrega la referencia al primer libro.
+        biblioteca.agregarLibro(libro2); // Agrega la referencia al segundo libro.
+        biblioteca.agregarLibro(libro3); // Agrega la referencia al tercer libro.
+
+        System.out.println("\n=== CATÁLOGO COMPLETO ==="); // Imprime el encabezado del catálogo.
+        biblioteca.mostrarCatalogo(); // Muestra todos los libros registrados.
+
+        System.out.println("\n=== BÚSQUEDA: GABRIEL GARCÍA MÁRQUEZ ==="); // Imprime el encabezado de búsqueda.
+        biblioteca.buscarPorAutor("Gabriel García Márquez"); // Busca libros de ese autor.
+
+        System.out.println("\n=== BÚSQUEDA: GEORGE ORWELL ==="); // Imprime el encabezado de búsqueda.
+        biblioteca.buscarPorAutor("George Orwell"); // Busca libros de ese autor.
+
+        System.out.println("\n=== BÚSQUEDA: J.K. ROWLING ==="); // Imprime el encabezado de búsqueda.
+        biblioteca.buscarPorAutor("J.K. Rowling"); // Prueba una búsqueda sin coincidencias.
+
+    } // Termina el método main.
+} // Termina la clase AppBiblioteca.

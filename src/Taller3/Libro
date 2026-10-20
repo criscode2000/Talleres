@@ -1,0 +1,25 @@
+
+package Taller3.Biblioteca; // Indica el paquete de la clase.
+
+public class Libro { // Declara la clase que representa un libro.
+
+    private String titulo; // Guarda el título del libro.
+    private String autor; // Guarda el nombre del autor.
+
+    public Libro(String titulo, String autor) { // Constructor con título y autor.
+        this.titulo = titulo; // Guarda el título recibido.
+        this.autor = autor; // Guarda el autor recibido.
+    }
+
+    public String getTitulo() { // Getter del título.
+        return titulo; // Devuelve el título.
+    }
+
+    public String getAutor() { // Getter del autor.
+        return autor; // Devuelve el autor.
+    }
+
+    public void mostrarInfo() { // Muestra la información del libro.
+        System.out.println("Título: " + titulo + " | Autor: " + autor); // Imprime el título y el autor.
+    }
+}

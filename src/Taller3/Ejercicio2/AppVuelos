@@ -1,0 +1,28 @@
+
+package Taller3.Vuelo; // Indica el paquete de la aplicación.
+
+public class AppVuelo { // Declara la clase principal del ejercicio.
+
+    public static void main(String[] args) { // Punto de inicio del programa.
+
+        Vuelo vuelo = new Vuelo("AV9401", "Bogotá", "Medellín", 5); // Crea el vuelo con cinco asientos.
+
+        System.out.println("=== ESTADO INICIAL DE LOS ASIENTOS ==="); // Imprime el encabezado inicial.
+        vuelo.mostrarAsientos(); // Muestra los cinco asientos libres.
+
+        System.out.println("\n=== EMBARQUE DE PASAJEROS ==="); // Imprime el encabezado del embarque.
+        vuelo.embarcar("A1"); // Intenta ocupar el asiento A1.
+        vuelo.embarcar("A2"); // Intenta ocupar el asiento A2.
+        vuelo.embarcar("A3"); // Intenta ocupar el asiento A3.
+
+        System.out.println("\n=== ESTADO DESPUÉS DEL EMBARQUE ==="); // Imprime el encabezado intermedio.
+        vuelo.mostrarAsientos(); // Muestra los asientos ocupados y libres.
+
+        System.out.println("\n=== DESEMBARQUE ==="); // Imprime el encabezado del desembarque.
+        vuelo.desembarcar("A2"); // Libera el asiento A2.
+
+        System.out.println("\n=== ESTADO FINAL ==="); // Imprime el encabezado final.
+        vuelo.mostrarAsientos(); // Muestra A1 y A3 ocupados y los demás libres.
+
+    } // Termina el método main.
+} // Termina la clase AppVuelo.

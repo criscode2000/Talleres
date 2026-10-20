@@ -1,0 +1,67 @@
+
+package Taller3.Lector; // Indica el paquete al que pertenece la clase.
+
+public class Libro { // Declara la clase que representa un libro.
+
+    private String titulo; // Guarda el título del libro.
+    private String autor; // Guarda el nombre del autor.
+    private boolean prestado; // Indica si el libro está prestado.
+
+    public Libro() { // Constructor vacío.
+        this.titulo = ""; // Inicializa el título vacío.
+        this.autor = ""; // Inicializa el autor vacío.
+        this.prestado = false; // El libro comienza disponible.
+    }
+
+    public Libro(String titulo, String autor) { // Constructor con título y autor.
+        this.titulo = titulo; // Asigna el título recibido.
+        this.autor = autor; // Asigna el autor recibido.
+        this.prestado = false; // El libro comienza sin prestar.
+    }
+
+    public String getTitulo() { // Permite consultar el título.
+        return titulo; // Devuelve el título almacenado.
+    }
+
+    public void setTitulo(String titulo) { // Permite modificar el título.
+        this.titulo = titulo; // Guarda el nuevo título.
+    }
+
+    public String getAutor() { // Permite consultar el autor.
+        return autor; // Devuelve el autor almacenado.
+    }
+
+    public void setAutor(String autor) { // Permite modificar el autor.
+        this.autor = autor; // Guarda el nuevo autor.
+    }
+
+    public boolean isPrestado() { // Consulta si el libro está prestado.
+        return prestado; // Devuelve true si está prestado.
+    }
+
+    public void setPrestado(boolean prestado) { // Permite cambiar el estado.
+        this.prestado = prestado; // Guarda el nuevo estado del préstamo.
+    }
+
+    public void prestar() { // Marca el libro como prestado.
+        if (prestado) { // Comprueba si ya está prestado.
+            System.out.println("El libro ya está prestado."); // Informa del problema.
+        } else { // Se ejecuta si está disponible.
+            prestado = true; // Cambia el estado a prestado.
+            System.out.println("Libro prestado: " + titulo); // Confirma el préstamo.
+        }
+    }
+
+    public void devolver() { // Marca el libro como disponible.
+        if (prestado) { // Comprueba que estaba prestado.
+            prestado = false; // Cambia el estado a disponible.
+            System.out.println("Libro devuelto: " + titulo); // Confirma la devolución.
+        } else { // Se ejecuta si ya estaba disponible.
+            System.out.println("El libro no estaba prestado."); // Informa del estado.
+        }
+    }
+
+    public void mostrarInfo() { // Muestra la información del libro.
+        System.out.println("Título: " + titulo + " | Autor: " + autor); // Imprime sus datos.
+    }
+}

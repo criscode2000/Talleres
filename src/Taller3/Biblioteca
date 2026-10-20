@@ -1,0 +1,63 @@
+
+package Taller3.Biblioteca; // Indica el paquete de la clase.
+
+public class Biblioteca { // Declara la clase que representa una biblioteca.
+
+    private String nombre; // Guarda el nombre de la biblioteca.
+    private Libro[] catalogo; // Guarda referencias a los libros registrados.
+    private int cantidad; // Cuenta cuántos libros se han agregado.
+
+    public Biblioteca(String nombre) { // Constructor que recibe el nombre.
+        this.nombre = nombre; // Guarda el nombre recibido.
+        this.catalogo = new Libro[10]; // Crea el arreglo con capacidad para diez libros.
+        this.cantidad = 0; // Inicializa el catálogo sin libros registrados.
+    }
+
+    public String getNombre() { // Getter del nombre de la biblioteca.
+        return nombre; // Devuelve el nombre almacenado.
+    }
+
+    public void agregarLibro(Libro libro) { // Agrega una referencia al catálogo.
+        if (libro == null) { // Comprueba si la referencia recibida es nula.
+            System.out.println("No se puede agregar un libro inexistente."); // Informa del error.
+            return; // Termina el método.
+        }
+
+        if (cantidad >= catalogo.length) { // Comprueba si se alcanzó la capacidad máxima.
+            System.out.println("El catálogo está lleno."); // Informa que no hay espacio.
+            return; // Termina el método sin agregar el libro.
+        }
+
+        catalogo[cantidad] = libro; // Guarda la referencia en la siguiente posición disponible.
+        cantidad++; // Incrementa la cantidad de libros registrados.
+        System.out.println("Libro agregado: " + libro.getTitulo()); // Confirma el registro.
+    }
+
+    public void mostrarCatalogo() { // Muestra todos los libros registrados.
+        System.out.println("Biblioteca: " + nombre); // Imprime el nombre de la biblioteca.
+
+        if (cantidad == 0) { // Comprueba si el catálogo está vacío.
+            System.out.println("El catálogo no tiene libros."); // Informa que no hay registros.
+            return; // Termina el método.
+        }
+
+        for (int i = 0; i < cantidad; i++) { // Recorre solo las posiciones ocupadas.
+            catalogo[i].mostrarInfo(); // Solicita a cada libro que muestre su información.
+        }
+    }
+
+    public void buscarPorAutor(String autor) { // Busca libros por el nombre del autor.
+        boolean encontrado = false; // Indica inicialmente que no hay coincidencias.
+
+        for (int i = 0; i < cantidad; i++) { // Recorre los libros registrados.
+            if (catalogo[i].getAutor().equalsIgnoreCase(autor)) { // Compara autores ignorando mayúsculas.
+                catalogo[i].mostrarInfo(); // Muestra el libro que coincide.
+                encontrado = true; // Registra que se encontró al menos una coincidencia.
+            }
+        }
+
+        if (!encontrado) { // Comprueba si la búsqueda no encontró coincidencias.
+            System.out.println("No se encontraron libros del autor: " + autor); // Informa el resultado.
+        }
+    }
+}

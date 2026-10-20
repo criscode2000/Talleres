@@ -1,0 +1,51 @@
+
+package Taller3.Vuelo; // Indica el paquete al que pertenece la clase.
+
+public class Vuelo { // Declara la clase que representa un vuelo.
+
+    private String numero; // Guarda el número o identificador del vuelo.
+    private String origen; // Guarda la ciudad de origen.
+    private String destino; // Guarda la ciudad de destino.
+    private Asiento[] asientos; // Almacena las referencias a los asientos del vuelo.
+
+    public Vuelo(String numero, String origen, String destino, int capacidad) { // Constructor completo.
+        this.numero = numero; // Asigna el número del vuelo.
+        this.origen = origen; // Asigna la ciudad de origen.
+        this.destino = destino; // Asigna la ciudad de destino.
+        this.asientos = new Asiento[capacidad]; // Crea el arreglo para la capacidad indicada.
+
+        for (int i = 0; i < capacidad; i++) { // Recorre las posiciones del arreglo.
+            asientos[i] = new Asiento("A" + (i + 1)); // Crea cada asiento con código A1, A2, A3...
+        }
+    }
+
+    public void mostrarAsientos() { // Muestra todos los asientos del vuelo.
+        System.out.println("Vuelo: " + numero + " | " + origen + " - " + destino); // Imprime los datos del vuelo.
+
+        for (int i = 0; i < asientos.length; i++) { // Recorre todos los asientos.
+            asientos[i].mostrarEstado(); // Muestra el estado de cada asiento.
+        }
+    }
+
+    public void embarcar(String codigoAsiento) { // Busca un asiento para ocuparlo.
+        for (int i = 0; i < asientos.length; i++) { // Recorre el arreglo de asientos.
+            if (asientos[i].getCodigo().equalsIgnoreCase(codigoAsiento)) { // Compara el código ignorando mayúsculas.
+                asientos[i].ocupar(); // Intenta ocupar el asiento encontrado.
+                return; // Termina porque ya encontró el asiento.
+            }
+        }
+
+        System.out.println("No existe el asiento " + codigoAsiento + " en este vuelo."); // Informa si no lo encuentra.
+    }
+
+    public void desembarcar(String codigoAsiento) { // Busca un asiento para liberarlo.
+        for (int i = 0; i < asientos.length; i++) { // Recorre el arreglo de asientos.
+            if (asientos[i].getCodigo().equalsIgnoreCase(codigoAsiento)) { // Compara el código solicitado.
+                asientos[i].liberar(); // Intenta liberar el asiento encontrado.
+                return; // Termina porque ya encontró el asiento.
+            }
+        }
+
+        System.out.println("No existe el asiento " + codigoAsiento + " en este vuelo."); // Informa si no lo encuentra.
+    }
+}
